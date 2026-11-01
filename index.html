@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ashwan — Video Editor &amp; Graphic Designer</title>
+    <meta
+      name="description"
+      content="Ashwan is a Video Editor and Graphic Designer specializing in editing, motion graphics and visual storytelling. I turn ideas into visual stories."
+    />
+    <meta name="theme-color" content="#E8E4E0" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      try {
+        if (localStorage.getItem('ashwan-mode') === 'dark') {
+          document.documentElement.dataset.mode = 'dark'
+          document.querySelector('meta[name=theme-color]').content = '#1A1818'
+        }
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
