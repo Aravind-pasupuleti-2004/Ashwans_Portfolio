@@ -186,6 +186,11 @@ export default function Hero({ onOpenShowreel }) {
         <div className="fig">
           <button className="reel" onClick={onOpenShowreel} aria-label="Explore the showreel">
             <span className="reel__placeholder">
+              <img
+                src="./media/Group 2.jpg"
+                alt="Ashwan — Video Editor & Graphic Designer"
+                className="reel__photo"
+              />
               <span className="reel__wm">ASHWAN</span>
               <span className="reel__play"><Play /></span>
             </span>

@@ -32,13 +32,15 @@ export default function Contact() {
             <a className="contact__link" href={`mailto:${contact.email}`}>
               <Mail /> {contact.email}
             </a>
-          ) : contact.instagram ? (
-            <a className="contact__link" href={contact.instagram} target="_blank" rel="noreferrer">
-              <Instagram /> Instagram
+          ) : null}
+          {contact.instagram ? (
+            <a className="contact__link" href={contact.instagram} target="_blank" rel="noopener noreferrer">
+              <Instagram /> @ashwan_rao
             </a>
-          ) : (
+          ) : null}
+          {!contact.email && !contact.instagram ? (
             <span className="contact__empty">{contact.emptyNote}</span>
-          )}
+          ) : null}
         </Reveal>
       </div>
     </section>

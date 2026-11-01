@@ -17,6 +17,9 @@ function darken(hex, f = 0.93) {
 /* what each door holds — shown beside the door on hover (desktop),
    docked under it on phones: [headline, kicker, checklist] */
 function infoFor(p) {
+  if (p.skills && p.skills.length) {
+    return [p.title, p.category, p.skills]
+  }
   const sentences = p.description
     .split('. ')
     .filter(Boolean)
@@ -27,14 +30,14 @@ function infoFor(p) {
 /* ---------- one door with its casing ---------- */
 function Door({ p, i }) {
   return (
-    <li className="unit" style={{ '--i': i, '--door': p.accent, '--door-dk': darken(p.accent) }}>
+    <li className={`unit${p.aiDoor ? ' unit--ai' : ''}`} style={{ '--i': i, '--door': p.accent, '--door-dk': darken(p.accent) }}>
       <button className="doorway" aria-label={`Open the ${p.title} door`}>
         <span className="casing" />
         <span className="opening">
           <span className="droom" />
           <span className="door">
             <span className="door__flute" />
-            <span className="plate">{p.title}</span>
+            <span className={`plate${p.aiDoor ? ' plate--ai' : ''}`}>{p.title}</span>
             <span className="handle">
               <span className="handle__lever" />
               <span className="handle__lock" />
@@ -463,7 +466,7 @@ export default function Works() {
     let mForce = -1
     let mShown = -1
     const mSpan = () => Math.max(1, el.offsetHeight - window.innerHeight)
-    const mobY = (i) => el.getBoundingClientRect().top + window.scrollY + (Math.min(5, Math.max(0, i)) / 5) * mSpan()
+    const mobY = (i) => el.getBoundingClientRect().top + window.scrollY + (Math.min(4, Math.max(0, i)) / 4) * mSpan()
     const mDots = Array.from(el.querySelectorAll('.works__dots i'))
     let mCur = 0
     let mLast = 0
@@ -478,13 +481,13 @@ export default function Works() {
       return k + u * u * (3 - 2 * u)
     }
     const mProgress = () => Math.min(1, Math.max(0, -el.getBoundingClientRect().top / mSpan()))
-    const mTarget = () => (mForce >= 0 ? mForce : mDwell(mProgress() * 5))
+    const mTarget = () => (mForce >= 0 ? mForce : mDwell(mProgress() * 4))
 
     function mShow(i) {
       if (i === mShown) return
       mShown = i
       setInfo(i)
-      mDots.forEach((d, k) => d.classList.toggle('on', k === Math.min(5, i)))
+      mDots.forEach((d, k) => d.classList.toggle('on', k === Math.min(4, i)))
       /* the description just filled: re-fit the door under the new text */
       if (MOB.matches) mSize()
       info.getAnimations().forEach((a) => a.cancel())
@@ -549,7 +552,7 @@ export default function Works() {
         if (busy || mForce >= 0 || performance.now() < swipeLock) return
         const r = el.getBoundingClientRect()
         if (r.top > 0 || r.bottom < window.innerHeight) return // only while pinned
-        const want = mobY(Math.round(mProgress() * 5))
+        const want = mobY(Math.round(mProgress() * 4))
         if (Math.abs(window.scrollY - want) > 2) snapTo(want)
       }, 220)
     }
@@ -561,14 +564,14 @@ export default function Works() {
     el.addEventListener('touchstart', (e) => {
       tx0 = e.touches[0].clientX
       ty0 = e.touches[0].clientY
-      i0 = Math.round(mProgress() * 5)
+      i0 = Math.round(mProgress() * 4)
     }, { passive: true })
     el.addEventListener('touchend', (e) => {
       if (!MOB.matches || busy || mForce >= 0) return
       const dx = e.changedTouches[0].clientX - tx0
       const dy = e.changedTouches[0].clientY - ty0
       if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy) * 1.2) return
-      const to = Math.min(5, Math.max(0, i0 + (dx < 0 ? 1 : -1)))
+      const to = Math.min(4, Math.max(0, i0 + (dx < 0 ? 1 : -1)))
       swipeLock = performance.now() + 700
       snapTo(mobY(to))
     }, { passive: true })
@@ -611,9 +614,9 @@ export default function Works() {
       <div className="works__tex" aria-hidden="true" />
       <div className="works__pin">
         <div className="shell works__wall">
-          <h2 className="paint">Six edits. One reel at a time.</h2>
+          <h2 className="paint">Five tools. One creative vision.</h2>
           <p className="works__dots" aria-hidden="true">
-            <i className="on" /><i /><i /><i /><i /><i />
+            <i className="on" /><i /><i /><i /><i />
           </p>
           <ul className="works__row">
             {projects.map((p, i) => (
@@ -628,8 +631,8 @@ export default function Works() {
             <ul className="dinfo__p" />
           </div>
           <p className="works__hint">
-            <span>{projects.length} doors · placeholder reel</span>
-            <span>Replace media via src/data/portfolio.js</span>
+            <span>{projects.length} creative tools</span>
+            <span>Hover a door to explore</span>
           </p>
         </div>
       </div>

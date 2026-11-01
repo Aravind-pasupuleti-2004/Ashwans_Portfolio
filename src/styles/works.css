@@ -668,7 +668,7 @@ html[data-mode='dark'] .dinfo__p li::before {
   .works {
     padding-top: 0;
     overflow: clip;
-    height: calc(100svh + 5 * 55svh); /* 6 doors → 5 stretches of walking */
+    height: calc(100svh + 4 * 55svh); /* 5 doors → 4 stretches of walking */
   }
   .works__pin {
     --uw: min(56vw, calc((100svh - 31rem) / 2.25));
@@ -904,4 +904,150 @@ html[data-mode='dark'] .room__glow { opacity: 0.55; }
   .room.anim,
   .room__in,
   .room__glow { transition: none !important; }
+}
+
+/* =========================================================
+   AI WORKS — fifth door: black-and-white monochrome theme.
+   Only this door is affected; all other four doors are unchanged.
+   ========================================================= */
+
+/* Override the door panel background to pure black */
+.unit--ai .door {
+  --dc: #000000;
+  background:
+    linear-gradient(100deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0) 30%, rgba(0,0,0,0.4) 100%),
+    #000000;
+  box-shadow:
+    inset 0 0 0 0.3cqi rgba(255, 255, 255, 0.12),
+    inset 0.6cqi 0 0 rgba(255, 255, 255, 0.06);
+}
+html[data-mode='dark'] .unit--ai .door {
+  background:
+    linear-gradient(100deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0) 30%, rgba(0,0,0,0.5) 100%),
+    #000000;
+}
+
+/* Override the door's edge thickness strip */
+.unit--ai .door::after {
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(0,0,0,0.6)), #000000;
+  filter: brightness(0.5);
+}
+
+/* Override the reeded flute on the black door */
+.unit--ai .door__flute {
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255,255,255,0.04) 0,
+    rgba(255,255,255,0.01) 1cqi,
+    rgba(0,0,0,0.4) 2.1cqi,
+    rgba(255,255,255,0.04) 2.8cqi
+  );
+  box-shadow:
+    inset 0 0 0 0.3cqi rgba(255,255,255,0.08),
+    inset 1cqi 1.2cqi 2cqi rgba(0,0,0,0.6),
+    inset -0.6cqi -0.6cqi 1cqi rgba(255,255,255,0.04);
+}
+
+/* AI name plate — white text on dark, no gold */
+.plate--ai {
+  color: #ffffff !important;
+  text-shadow: 0 0.28cqi 0 rgba(255,255,255,0.12), 0 -0.15cqi 0 rgba(0,0,0,0.6) !important;
+  background: linear-gradient(160deg, #2a2a2a 0%, #111111 28%, #222222 48%, #0a0a0a 72%, #1a1a1a 100%) !important;
+  box-shadow:
+    0 0.5cqi 1cqi rgba(0,0,0,0.7),
+    inset 0 0.3cqi 0 rgba(255,255,255,0.12),
+    inset 0 -0.3cqi 0 rgba(0,0,0,0.7) !important;
+  border: 0.25cqi solid rgba(255,255,255,0.15) !important;
+}
+.plate--ai::before,
+.plate--ai::after {
+  background: radial-gradient(circle at 35% 35%, #ffffff, #888888 70%) !important;
+}
+
+/* Monochrome brass handle — turn it silver/dark for AI door */
+.unit--ai .handle {
+  background: radial-gradient(circle at 36% 30%, #ffffff 0, #cccccc 14%, #888888 40%, #444444 70%, #1a1a1a 100%);
+  box-shadow:
+    0 0 0 0.35cqi rgba(255,255,255,0.08),
+    0.9cqi 1.5cqi 2cqi rgba(0,0,0,0.7),
+    inset -0.7cqi -0.9cqi 1.1cqi rgba(0,0,0,0.8),
+    inset 0.5cqi 0.6cqi 0.8cqi rgba(255,255,255,0.25);
+}
+.unit--ai .handle::before {
+  background: radial-gradient(circle at 38% 32%, #ffffff, #aaaaaa 45%, #333333 100%);
+  box-shadow: 0.4cqi 0.7cqi 0.9cqi rgba(0,0,0,0.6), inset 0 0 0 0.2cqi rgba(255,255,255,0.2);
+}
+.unit--ai .handle__lever {
+  background: linear-gradient(180deg, #ffffff 0%, #cccccc 16%, #888888 42%, #444444 72%, #222222 100%);
+  box-shadow:
+    0.3cqi 2.4cqi 2.2cqi rgba(0,0,0,0.6),
+    0 0.4cqi 0.4cqi rgba(0,0,0,0.4),
+    inset 0 -0.3cqi 0.4cqi rgba(0,0,0,0.7);
+}
+.unit--ai .handle__lever::before {
+  background: linear-gradient(180deg, #ffffff 0%, #cccccc 18%, #999999 45%, #555555 75%, #222222 100%);
+}
+.unit--ai .handle__lever::after {
+  background: linear-gradient(90deg, rgba(255,255,255,0.95), rgba(255,255,255,0.2));
+}
+.unit--ai .handle__lock {
+  background: radial-gradient(ellipse at 38% 28%, #ffffff 0, #aaaaaa 22%, #555555 55%, #1a1a1a 100%);
+  box-shadow:
+    0 0 0 0.3cqi rgba(255,255,255,0.1),
+    0.6cqi 1cqi 1.4cqi rgba(0,0,0,0.7),
+    inset -0.4cqi -0.6cqi 0.8cqi rgba(0,0,0,0.8),
+    inset 0.3cqi 0.4cqi 0.5cqi rgba(255,255,255,0.2);
+}
+
+/* Monochrome sill light (cool white instead of warm amber) */
+.unit--ai .sill {
+  background: rgba(200, 220, 255, 0.8);
+}
+html[data-mode='dark'] .unit--ai .sill {
+  background: rgba(220, 230, 255, 0.9);
+}
+
+/* Monochrome wall lamp glow behind the AI door */
+.unit--ai::before {
+  background: radial-gradient(closest-side, rgba(240, 240, 255, 0.25), transparent 100%);
+}
+
+/* Casing — keep the structural look, make it subtly monochrome */
+.unit--ai .casing {
+  background:
+    linear-gradient(90deg, rgba(0,0,0,0.15), rgba(255,255,255,0.08) 3cqi, transparent 6cqi, transparent calc(100% - 6cqi), rgba(0,0,0,0.1) calc(100% - 3cqi), rgba(0,0,0,0.25)),
+    linear-gradient(180deg, rgba(255,255,255,0.12), transparent 30%),
+    #2a2a2a;
+}
+html[data-mode='dark'] .unit--ai .casing {
+  background:
+    linear-gradient(90deg, rgba(0,0,0,0.35), rgba(255,255,255,0.03) 3cqi, transparent 6cqi, transparent calc(100% - 6cqi), rgba(0,0,0,0.4)),
+    linear-gradient(180deg, rgba(255,255,255,0.04), transparent 30%),
+    #1a1a1a;
+}
+
+/* The dinfo panel text for AI door — use white/grey accents when active */
+.unit--ai.on ~ .dinfo .dinfo__t,
+.works .dinfo[data-ai] .dinfo__t {
+  color: #aaaaaa;
+}
+.unit--ai.on ~ .dinfo .dinfo__p li::before,
+.works .dinfo[data-ai] .dinfo__p li::before {
+  border-color: #555555;
+  background-color: #333333;
+}
+
+/* Ensure door shade is subtly visible on hover for depth */
+.unit--ai .door__shade {
+  background: rgba(255, 255, 255, 0.05);
+  opacity: calc(var(--o, 0) * 0.15);
+}
+
+/* Door room behind the AI door — keep it very dark */
+.unit--ai .droom {
+  background: #050505;
+  box-shadow: inset 2cqi 0 4cqi rgba(0,0,0,0.95), inset 0 2cqi 4cqi rgba(0,0,0,0.95);
+}
+.unit--ai .droom::after {
+  box-shadow: inset 0 0 5cqi rgba(200,210,255,0.15), inset 0 0 1.2cqi rgba(255,255,255,0.08);
 }
