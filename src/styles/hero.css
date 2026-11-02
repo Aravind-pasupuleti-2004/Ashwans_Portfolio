@@ -18,7 +18,8 @@ html[data-mode='dark'] .hero {
   background: radial-gradient(120% 90% at 62% 30%, #2a2525 0%, #1f1c1c 48%, #141212 100%);
   box-shadow: 0 1px 0 rgba(232, 228, 224, 0.08), 0 1.75rem 3rem -1.25rem rgba(0, 0, 0, 0.85);
 }
-@media (min-width: 768px) and (max-width: 1023.98px) { .hero { --fig-h: 38rem; } }
+.hero { --fig-h: 31rem; }
+@media (min-width: 768px) and (max-width: 1023.98px) { .hero { --fig-h: 42rem; } }
 @media (min-width: 1024px) { .hero { --fig-h: 40rem; } }
 
 .hero__vig {
@@ -61,10 +62,17 @@ html[data-mode='dark'] .hero__amb {
 body.ready .fig { opacity: 1; transform: translate(-50%, 0); }
 @media (min-width: 1024px) {
   .fig {
-    height: min(calc(100% - var(--bar-h) - 6rem), 52rem, 34rem);
+    height: min(calc(100% - var(--bar-h) - 4rem), 56rem, 44rem);
     left: auto;
     right: calc(max(0px, (100% - var(--container-shell)) / 2) + var(--gut-lg));
     transform: translateY(2.5rem);
+  }
+}
+/* short viewports (small laptops, 768-tall tablets): cap the reel so its
+   top parks under the greeting lines and the hover tag clears the meta text */
+@media (min-width: 1024px) and (max-height: 919.98px) {
+  .fig {
+    height: min(calc(100% - var(--bar-h) - 4rem), 56rem, 36rem);
   }
 }
 
@@ -331,7 +339,34 @@ html[data-mode='dark'] .cal__word { color: #0a0a0a; }
   .hero__content { padding-bottom: calc(var(--fig-h) + 3rem); }
 }
 @media (max-width: 639.98px) {
-  .hero { --fig-h: 20rem; }
+  .hero { --fig-h: 23rem; }
   .hero__content { padding-top: 6rem; gap: 1.5rem; }
   .fig__card { bottom: -1rem; left: 50%; translate: -50% 0; }
+}
+
+/* =========================================================
+  wide-screen fig overrides — appended last so they win the
+   cascade over every base hero rule above
+   ========================================================= */
+/* short viewports (small laptops, 768-tall tablets): cap the
+   reel so its top parks under the greeting and the hover tag
+   clears the meta text */
+@media (min-width: 1024px) and (max-height: 919.98px) {
+  .fig {
+    height: min(calc(100% - var(--bar-h) - 4rem), 56rem, 36rem);
+  }
+}
+/* narrow-desktop band (1024–1279): the 12-col grid leaves no room
+   beside the greeting column, so the reel drops back to the
+   stacked-below pattern the tablet and phone builds use */
+@media (min-width: 1024px) and (max-width: 1279.98px) {
+  .hero { --fig-h: 38rem; }
+  .h1 { font-size: 3.5rem; }
+  .hero__content { min-height: auto; padding-bottom: calc(var(--fig-h) + 1.25rem); }
+  .fig {
+    left: 50%;
+    right: auto;
+    height: var(--fig-h);
+    transform: translate(-50%, 0);
+  }
 }

@@ -121,24 +121,54 @@ export function ProjectRoom({ project, onClose, onBeginClose }) {
             </div>
           </div>
 
-          <div className="room__media">
-            {live.videoUrl ? (
-              <iframe
-                src={live.videoUrl}
-                title={live.title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 0 }}
-              />
-            ) : live.thumb ? (
-              <img src={live.thumb} alt={live.title} />
-            ) : (
-              <div className="room__ph">
-                <Film />
-                <small>Preview slot — add thumb / videoUrl in src/data/portfolio.js</small>
-              </div>
-            )}
-          </div>
+          {!live.videos && !live.gallery && (
+            <div className="room__media">
+              {live.videoUrl ? (
+                <iframe
+                  src={live.videoUrl}
+                  title={live.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 0 }}
+                />
+              ) : live.thumb ? (
+                <img src={live.thumb} alt={live.title} />
+              ) : (
+                <div className="room__ph">
+                  <Film />
+                  <small>Preview slot — add thumb / videoUrl in src/data/portfolio.js</small>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* playable YouTube wall — in-page embeds, not links */}
+          {live.videos && (
+            <div className="room__videos">
+              {live.videos.map((id, i) => (
+                <div className="room__vframe" key={id}>
+                  <iframe
+                    src={`https://www.youtube.com/embed/${id}?rel=0`}
+                    title={i === 0 ? `${live.title} — featured edit` : `${live.title} — edit ${i + 1}`}
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  />
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* image portfolio — masonry wall of door works */}
+          {live.gallery && (
+            <div className="room__gallery">
+              {live.gallery.map((g) => (
+                <figure className="room__shot" key={g.src}>
+                  <img src={g.src} alt={g.alt || live.title} loading="lazy" />
+                </figure>
+              ))}
+            </div>
+          )}
 
           {live.videoUrl || live.projectUrl ? (
             <a className="room__open pill pill--dark pill--arrow" href={live.projectUrl || live.videoUrl} target="_blank" rel="noreferrer">
@@ -147,7 +177,7 @@ export function ProjectRoom({ project, onClose, onBeginClose }) {
                 <span className="pill__badge" data-h="x 0 3" data-hs="320 18" data-ht=".pill"><External /></span>
               </span>
             </a>
-          ) : (
+          ) : live.videos || live.gallery ? null : (
             <p className="room__note">
               Placeholder project — drop real media in <code>public/media/</code> and wire it up in{' '}
               <code>src/data/portfolio.js</code>.

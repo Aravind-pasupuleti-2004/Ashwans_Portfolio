@@ -886,6 +886,51 @@ html[data-mode='dark'] .room__glow { opacity: 0.55; }
 .room__note { margin-top: 1.25rem; font-size: 0.8125rem; color: rgba(var(--fg-rgb), 0.5); }
 .room__note code { font-family: var(--mono); font-size: 0.75rem; }
 
+/* playable YouTube wall — first embed is the featured full-width edit,
+   the rest pair up in a two-column grid below it */
+.room__videos {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+@media (max-width: 767.98px) { .room__videos { grid-template-columns: minmax(0, 1fr); gap: 1rem; } }
+.room__vframe {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-card-sm);
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 24px 60px -28px rgba(0, 0, 0, 0.5);
+}
+.room__videos .room__vframe:first-child { grid-column: 1 / -1; }
+.room__vframe iframe {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; border: 0;
+}
+
+/* image portfolio — masonry wall for portrait/poster mixes */
+.room__gallery {
+  margin-top: 1rem;
+  columns: 1;
+  column-gap: 1.25rem;
+}
+@media (min-width: 640px) { .room__gallery { columns: 2; } }
+@media (min-width: 1024px) { .room__gallery { columns: 3; } }
+.room__shot {
+  margin: 0 0 1.25rem;
+  break-inside: avoid;
+  border-radius: var(--radius-card-sm);
+  overflow: hidden;
+  background: #141212;
+  box-shadow: 0 24px 60px -28px rgba(0, 0, 0, 0.5);
+}
+.room__shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 /* ---------- reduced motion: everything reads as a static wall ---------- */
 @media (prefers-reduced-motion: reduce) {
   .door,
