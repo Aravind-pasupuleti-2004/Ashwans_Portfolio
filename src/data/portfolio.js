@@ -31,14 +31,14 @@ export const hero = {
   eyebrow: 'Video Editor',
   greeting: ["Hi, I'm Ashwan.", 'I turn ideas into', 'visual stories.'],
   // Words the flip-calendar cycles through (short, fact-based skills)
-  flipWords: ['Visual Stories', 'Video Editing', 'Motion Graphics', 'Color Grading', 'Sound Sync', 'Reels & Shorts'],
+  flipWords: ['Photoshop', 'Premiere Pro', 'After Effects', 'DaVinci Resolve', 'Color Grading', 'Sound Sync'],
   taglineAlt: 'Creative visuals. Meaningful stories. Impactful experiences.',
   ctas: { work: 'See my work', contact: 'Get in touch' },
-  showreelLabel: 'Showreel · Placeholder',
+  showreelLabel: 'Showreel · Photoshop · Premiere · After Effects · DaVinci',
   // Bottom status bar of the hero
   status: {
     left: 'Available for work',
-    mid: 'Video · Motion · Design · Stories',
+    mid: 'Photoshop · Premiere Pro · After Effects · DaVinci Resolve',
     right: 'Scroll to explore',
   },
 }
@@ -47,7 +47,7 @@ export const hero = {
 export const projects = [
   {
     id: 'photoshop-works',
-    title: 'Adobe Photoshop',
+    title: 'ADOBE PHOTOSHOP',
     category: 'Photo Editing & Compositing',
     description:
       'Photo Manipulation & Compositing. Photo Retouching & Enhancement. Typography & Poster Design. Advertising & Product Design.',
@@ -66,7 +66,7 @@ export const projects = [
   },
   {
     id: 'premiere-pro-works',
-    title: 'Adobe Premiere Pro',
+    title: 'ADOBE PREMIERE PRO',
     category: 'Video Editing & Post-Production',
     description:
       'Trailer & Teaser Editing. Music Video & Beat Cuts. Social Media & Promotional Videos. Short Film Editing & Promo Cuts.',
@@ -85,7 +85,7 @@ export const projects = [
   },
   {
     id: 'after-effects-works',
-    title: 'Adobe After Effects',
+    title: 'ADOBE AFTER EFFECTS',
     category: 'Motion Graphics & Visual Effects',
     description:
       'Motion Graphics & Animation. Reels & Shorts. Title Design Animation. Logo Animation & Brand Videos.',
@@ -100,11 +100,11 @@ export const projects = [
     projectUrl: '',
     thumb: null,
     preview: null,
-    accent: '#00C9C9',
+    accent: '#9999FF',
   },
   {
     id: 'davinci-resolve-works',
-    title: 'DaVinci Resolve',
+    title: 'DAVINCI RESOLVE',
     category: 'Color Grading & Finishing',
     description:
       'Cinematic Color Grading. Color Correction & Skin Tone. Professional Video Editing.',
@@ -118,11 +118,11 @@ export const projects = [
     projectUrl: '',
     thumb: null,
     preview: null,
-    accent: '#0A0A0A',
+    accent: '#57C8FF',
   },
   {
     id: 'ai-works',
-    title: 'AI Works',
+    title: 'AI WORKS',
     category: 'AI-Powered Creative Production',
     description:
       'AI Image Generation. AI Video Generation. AI Image Enhancement & Editing. AI-Assisted Video Production.',

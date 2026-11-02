@@ -907,6 +907,177 @@ html[data-mode='dark'] .room__glow { opacity: 0.55; }
 }
 
 /* =========================================================
+   Software door finishes — these only repaint the existing
+   joinery, plate and hardware. The physical door geometry and
+   spring-driven opening remain shared by every door.
+   ========================================================= */
+.unit--photoshop-works {
+  --brand-deep: #001e36;
+  --brand-mid: #063b63;
+  --brand-bright: #31a8ff;
+  --brand-glow: rgba(49, 168, 255, 0.46);
+  --brand-metal-hi: #ddf5ff;
+  --brand-metal: #31a8ff;
+  --brand-metal-dk: #002b4c;
+  --brand-line: rgba(49, 168, 255, 0.38);
+  --brand-soft: rgba(49, 168, 255, 0.15);
+}
+.unit--premiere-pro-works,
+.unit--after-effects-works {
+  --brand-deep: #00005b;
+  --brand-mid: #242478;
+  --brand-bright: #9999ff;
+  --brand-glow: rgba(153, 153, 255, 0.46);
+  --brand-metal-hi: #f0edff;
+  --brand-metal: #9999ff;
+  --brand-metal-dk: #17175a;
+  --brand-line: rgba(153, 153, 255, 0.4);
+  --brand-soft: rgba(153, 153, 255, 0.16);
+}
+
+.unit--photoshop-works .casing,
+.unit--premiere-pro-works .casing,
+.unit--after-effects-works .casing {
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.28), rgba(255, 255, 255, 0.13) 3cqi, transparent 6cqi, transparent calc(100% - 6cqi), rgba(0, 0, 0, 0.2) calc(100% - 3cqi), rgba(0, 0, 0, 0.35)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), transparent 30%),
+    var(--brand-deep);
+  box-shadow:
+    inset 0 0 0 1.1cqi rgba(255, 255, 255, 0.13),
+    inset 0 0 0 1.5cqi rgba(0, 0, 0, 0.25),
+    inset 0 0 0 3.6cqi var(--brand-soft),
+    inset 0 0 0 4.1cqi rgba(0, 0, 0, 0.2),
+    1.5cqi 2.5cqi 4.5cqi rgba(0, 0, 0, 0.35);
+}
+.unit--photoshop-works .casing::before,
+.unit--premiere-pro-works .casing::before,
+.unit--after-effects-works .casing::before {
+  background: var(--brand-deep);
+  box-shadow:
+    inset 0 0.5cqi 0 var(--brand-line),
+    inset 0 1cqi 0 rgba(0, 0, 0, 0.2),
+    inset 0 -0.6cqi 1cqi rgba(0, 0, 0, 0.22);
+}
+.unit--photoshop-works .casing::after,
+.unit--premiere-pro-works .casing::after,
+.unit--after-effects-works .casing::after {
+  border-color: var(--brand-line);
+}
+.unit--photoshop-works .door,
+.unit--premiere-pro-works .door,
+.unit--after-effects-works .door {
+  --dc: var(--brand-deep);
+  background:
+    linear-gradient(100deg, rgba(255, 255, 255, 0.13) 0%, transparent 30%, rgba(0, 0, 0, 0.3) 100%),
+    linear-gradient(145deg, var(--brand-mid), var(--brand-deep) 62%);
+  box-shadow: inset 0 0 0 0.3cqi var(--brand-line), inset 0.6cqi 0 0 rgba(255, 255, 255, 0.08);
+}
+.unit--photoshop-works .door::after,
+.unit--premiere-pro-works .door::after,
+.unit--after-effects-works .door::after {
+  background: linear-gradient(180deg, var(--brand-line), rgba(0, 0, 0, 0.38)), var(--brand-deep);
+}
+.unit--photoshop-works .door__flute,
+.unit--premiere-pro-works .door__flute,
+.unit--after-effects-works .door__flute {
+  box-shadow:
+    inset 0 0 0 0.3cqi var(--brand-line),
+    inset 1cqi 1.2cqi 2cqi rgba(0, 0, 0, 0.36),
+    inset -0.6cqi -0.6cqi 1cqi var(--brand-soft);
+}
+.unit--photoshop-works .plate,
+.unit--premiere-pro-works .plate,
+.unit--after-effects-works .plate {
+  color: var(--brand-deep);
+  text-shadow:
+    0 0 0.6cqi var(--brand-glow),
+    0 0 1.2cqi var(--brand-glow),
+    0 0.28cqi 0 rgba(255, 255, 255, 0.35),
+    0 -0.15cqi 0 var(--brand-deep);
+  background: linear-gradient(160deg, #fff 0%, var(--brand-bright) 32%, #e7f7ff 52%, var(--brand-bright) 100%);
+  border: 0.25cqi solid var(--brand-bright);
+  box-shadow: 0 0.5cqi 1cqi rgba(0, 0, 0, 0.44), inset 0 0.3cqi 0 rgba(255, 255, 255, 0.75), inset 0 -0.3cqi 0 var(--brand-deep);
+}
+.unit--photoshop-works .plate::before,
+.unit--photoshop-works .plate::after,
+.unit--premiere-pro-works .plate::before,
+.unit--premiere-pro-works .plate::after,
+.unit--after-effects-works .plate::before,
+.unit--after-effects-works .plate::after {
+  background: radial-gradient(circle at 35% 35%, #fff, var(--brand-deep) 75%);
+}
+.unit--photoshop-works .handle,
+.unit--premiere-pro-works .handle,
+.unit--after-effects-works .handle {
+  background: radial-gradient(circle at 36% 30%, var(--brand-metal-hi) 0, var(--brand-bright) 23%, var(--brand-metal) 48%, var(--brand-metal-dk) 100%);
+  box-shadow: 0 0 0 0.35cqi var(--brand-line), 0.9cqi 1.5cqi 2cqi rgba(0, 0, 0, 0.48), inset -0.7cqi -0.9cqi 1.1cqi rgba(0, 0, 0, 0.55), inset 0.5cqi 0.6cqi 0.8cqi rgba(255, 255, 255, 0.35);
+}
+.unit--photoshop-works .handle::before,
+.unit--premiere-pro-works .handle::before,
+.unit--after-effects-works .handle::before,
+.unit--photoshop-works .handle__lock,
+.unit--premiere-pro-works .handle__lock,
+.unit--after-effects-works .handle__lock {
+  background: radial-gradient(circle at 38% 32%, var(--brand-metal-hi), var(--brand-metal) 45%, var(--brand-metal-dk) 100%);
+}
+.unit--photoshop-works .handle__lever,
+.unit--photoshop-works .handle__lever::before,
+.unit--premiere-pro-works .handle__lever,
+.unit--premiere-pro-works .handle__lever::before,
+.unit--after-effects-works .handle__lever,
+.unit--after-effects-works .handle__lever::before {
+  background: linear-gradient(180deg, var(--brand-metal-hi) 0%, var(--brand-bright) 22%, var(--brand-metal) 54%, var(--brand-metal-dk) 100%);
+}
+.unit--photoshop-works .droom,
+.unit--premiere-pro-works .droom,
+.unit--after-effects-works .droom { background: var(--brand-deep); }
+.unit--photoshop-works .droom::after,
+.unit--premiere-pro-works .droom::after,
+.unit--after-effects-works .droom::after { box-shadow: inset 0 0 5cqi var(--brand-glow), inset 0 0 1.2cqi var(--brand-bright); }
+.unit--photoshop-works .sill,
+.unit--premiere-pro-works .sill,
+.unit--after-effects-works .sill { background: var(--brand-bright); }
+.unit--photoshop-works::before,
+.unit--premiere-pro-works::before,
+.unit--after-effects-works::before { background: radial-gradient(closest-side, var(--brand-glow), transparent 100%); }
+.unit--photoshop-works.on .casing,
+.unit--premiere-pro-works.on .casing,
+.unit--after-effects-works.on .casing { box-shadow: 0 0 0 1px var(--brand-bright), 2cqi 5cqi 9cqi var(--liftc), 0 0 5cqi var(--brand-glow), inset 0 1px 0 rgba(255, 255, 255, 0.48); }
+
+/* DaVinci Resolve: a restrained colour-wheel glow over the same dark timber. */
+.unit--davinci-resolve-works .casing {
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.32), rgba(255, 255, 255, 0.12) 3cqi, transparent 6cqi, transparent calc(100% - 6cqi), rgba(0, 0, 0, 0.28) calc(100% - 3cqi), rgba(0, 0, 0, 0.4)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1), transparent 30%), #13233a;
+  box-shadow: inset 0 0 0 1.1cqi rgba(214, 242, 255, 0.2), inset 0 0 0 1.5cqi rgba(0, 0, 0, 0.28), inset 0 0 0 3.6cqi rgba(95, 205, 255, 0.22), inset 0 0 0 4.1cqi rgba(0, 0, 0, 0.22), 1.5cqi 2.5cqi 4.5cqi rgba(0, 0, 0, 0.4);
+}
+.unit--davinci-resolve-works .casing::before { background: #13233a; box-shadow: inset 0 0.5cqi 0 rgba(145, 225, 255, 0.32), inset 0 -0.6cqi 1cqi rgba(0, 0, 0, 0.25); }
+.unit--davinci-resolve-works .casing::after { border-color: rgba(157, 231, 255, 0.5); }
+.unit--davinci-resolve-works .door {
+  --dc: #12213a;
+  background:
+    linear-gradient(100deg, rgba(255, 255, 255, 0.15), transparent 30%, rgba(0, 0, 0, 0.36) 100%),
+    radial-gradient(circle at 50% 42%, rgba(255, 246, 160, 0.65) 0 5%, transparent 17%),
+    conic-gradient(from 222deg at 50% 42%, #3a7dff, #51d5ef, #58c56d, #f2d64b, #ed8955, #df5b86, #8c69ef, #3a7dff);
+  box-shadow: inset 0 0 0 0.3cqi rgba(195, 239, 255, 0.45), inset 0.6cqi 0 0 rgba(255, 255, 255, 0.09);
+}
+.unit--davinci-resolve-works .door::after { background: linear-gradient(180deg, rgba(164, 230, 255, 0.32), rgba(0, 0, 0, 0.45)), #12213a; }
+.unit--davinci-resolve-works .door__flute { background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.16) 0, rgba(255, 255, 255, 0.03) 1cqi, rgba(0, 0, 0, 0.18) 2.1cqi, rgba(255, 255, 255, 0.12) 2.8cqi); box-shadow: inset 0 0 0 0.3cqi rgba(210, 244, 255, 0.32), inset 1cqi 1.2cqi 2cqi rgba(0, 0, 0, 0.35), inset -0.6cqi -0.6cqi 1cqi rgba(255, 255, 255, 0.13); }
+.unit--davinci-resolve-works .plate { color: #10213a; text-shadow: 0 0 0.6cqi rgba(87, 200, 255, 0.6), 0 0 1.2cqi rgba(87, 200, 255, 0.4), 0 0.28cqi 0 rgba(255, 255, 255, 0.45); background: linear-gradient(160deg, #fff 0%, #d6f6ff 35%, #72d5ff 64%, #e7efff 100%); border: 0.25cqi solid rgba(255, 255, 255, 0.7); box-shadow: 0 0.5cqi 1cqi rgba(0, 0, 0, 0.45), inset 0 0.3cqi 0 #fff, inset 0 -0.3cqi 0 rgba(29, 115, 163, 0.35); }
+.unit--davinci-resolve-works .plate::before,
+.unit--davinci-resolve-works .plate::after { background: radial-gradient(circle at 35% 35%, #fff, #287db5 75%); }
+.unit--davinci-resolve-works .handle,
+.unit--davinci-resolve-works .handle__lock { background: radial-gradient(circle at 36% 30%, #fff 0, #c6f5ff 19%, #69c8e9 43%, #4063a3 68%, #152139 100%); }
+.unit--davinci-resolve-works .handle::before { background: radial-gradient(circle at 38% 32%, #fff, #80d9ef 45%, #263b75 100%); }
+.unit--davinci-resolve-works .handle__lever,
+.unit--davinci-resolve-works .handle__lever::before { background: linear-gradient(180deg, #fff 0%, #c9f6ff 20%, #62cbe9 52%, #425da0 78%, #192443 100%); }
+.unit--davinci-resolve-works .droom { background: #081526; }
+.unit--davinci-resolve-works .droom::after { box-shadow: inset 0 0 5cqi rgba(91, 206, 255, 0.52), inset 0 0 1.2cqi rgba(255, 221, 106, 0.85); }
+.unit--davinci-resolve-works .sill { background: linear-gradient(90deg, #54c9ff, #62dc8d, #ffe063, #ed6f8d, #856aff); }
+.unit--davinci-resolve-works::before { background: radial-gradient(closest-side, rgba(87, 200, 255, 0.4), transparent 100%); }
+.unit--davinci-resolve-works.on .casing { box-shadow: 0 0 0 1px rgba(176, 238, 255, 0.65), 2cqi 5cqi 9cqi var(--liftc), 0 0 5cqi rgba(87, 200, 255, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.55); }
+
+/* =========================================================
    AI WORKS — fifth door: black-and-white monochrome theme.
    Only this door is affected; all other four doors are unchanged.
    ========================================================= */

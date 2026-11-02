@@ -107,20 +107,6 @@ body.ready .fig { opacity: 1; transform: translate(-50%, 0); }
   font-size: clamp(3.4rem, 7.4vw, 5.6rem);
 }
 
-.reel__play {
-  position: absolute; left: 50%; top: 50%;
-  width: 4rem; height: 4rem;
-  translate: -50% -50%;
-  display: grid; place-items: center;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.14);
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
-  color: #fff; font-size: 1.25rem;
-  transition: transform 0.4s var(--e-spring), background 0.25s;
-}
-.reel:hover .reel__play { transform: scale(1.08); background: rgba(255, 255, 255, 0.22); }
-
 .reel__cap {
   position: absolute; left: 1rem; bottom: 1rem; right: 1rem;
   display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;

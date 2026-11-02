@@ -30,7 +30,10 @@ function infoFor(p) {
 /* ---------- one door with its casing ---------- */
 function Door({ p, i }) {
   return (
-    <li className={`unit${p.aiDoor ? ' unit--ai' : ''}`} style={{ '--i': i, '--door': p.accent, '--door-dk': darken(p.accent) }}>
+    <li
+      className={`unit unit--${p.id}${p.aiDoor ? ' unit--ai' : ''}`}
+      style={{ '--i': i, '--accent': p.accent, '--door': p.accent, '--door-dk': darken(p.accent) }}
+    >
       <button className="doorway" aria-label={`Open the ${p.title} door`}>
         <span className="casing" />
         <span className="opening">
@@ -223,9 +226,14 @@ export default function Works() {
     })
     const setInfo = (i) => {
       const [h, t, list] = INFO[i]
+      const project = projects[i]
       q('.dinfo__h', info).textContent = h
       q('.dinfo__t', info).textContent = t
       q('.dinfo__p', info).innerHTML = list.map((s) => `<li>${s}</li>`).join('')
+      info.style.setProperty('--accent', project.accent)
+      info.dataset.door = project.id
+      if (project.aiDoor) info.dataset.ai = ''
+      else delete info.dataset.ai
     }
 
     /* position the description in the space of the faded doors,

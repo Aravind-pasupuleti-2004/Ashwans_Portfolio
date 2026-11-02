@@ -2,13 +2,11 @@ import { useEffect, useState } from 'react'
 import { personal } from '../data/portfolio.js'
 
 const BANDS = [
-  { label: personal.name, c: '#1f1c1c', t: '#e8e4e0', dir: 1 },
-  { label: 'Wedding Films', c: '#4a2e35', t: '#e8e4e0', dir: -1 },
-  { label: 'Documentary', c: '#3e4a44', t: '#e8e4e0', dir: 1 },
-  { label: 'YouTube', c: '#7a3f34', t: '#f3eeec', dir: -1 },
-  { label: 'Motion Graphics', c: '#a4702e', t: '#f3eeec', dir: 1 },
-  { label: 'Graphic Design', c: '#c4b0b0', t: '#1a1818', dir: -1 },
-  { label: 'Six projects', c: '#5c5470', t: '#e8e4e0', dir: 1 },
+  { label: 'ADOBE PHOTOSHOP', c: '#001E36', t: '#31A8FF', dir: 1 },
+  { label: 'ADOBE PREMIERE PRO', c: '#00005B', t: '#9999FF', dir: -1 },
+  { label: 'ADOBE AFTER EFFECTS', c: '#00005B', t: '#9999FF', dir: 1 },
+  { label: 'DAVINCI RESOLVE', c: '#172A42', t: '#D9F4FF', dir: -1 },
+  { label: 'AI WORKS', c: '#000000', t: '#FFFFFF', dir: 1 },
 ]
 
 export default function Loader({ onDone }) {

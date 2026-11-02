@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { Reveal } from '../lib/ui.jsx'
-import { ArrowRight, ArrowUp, ArrowUpRight, Play, Film, Rewind } from './Icons.jsx'
+import { ArrowRight, ArrowUp, ArrowUpRight, Film, Rewind } from './Icons.jsx'
 import { personal, hero } from '../data/portfolio.js'
 
 /* =========================================================
@@ -192,7 +192,6 @@ export default function Hero({ onOpenShowreel }) {
                 className="reel__photo"
               />
               <span className="reel__wm">ASHWAN</span>
-              <span className="reel__play"><Play /></span>
             </span>
             <span className="reel__cap">
               <span>{hero.showreelLabel}</span>
