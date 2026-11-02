@@ -370,3 +370,10 @@ html[data-mode='dark'] .cal__word { color: #0a0a0a; }
     transform: translate(-50%, 0);
   }
 }
+/* wide screens: nudge the reel a touch further to the right — clears the
+   greeting tail more and trims the dead cream gap before the frame edge */
+@media (min-width: 1280px) {
+  .fig {
+    right: calc(max(0px, (100% - var(--container-shell)) / 2) + var(--gut-lg) - 3rem);
+  }
+}
