@@ -370,10 +370,13 @@ html[data-mode='dark'] .cal__word { color: #0a0a0a; }
     transform: translate(-50%, 0);
   }
 }
-/* wide screens: nudge the reel a touch further to the right — clears the
-   greeting tail more and trims the dead cream gap before the frame edge */
+/* wide screens: the shell-aligned anchor — on desktop the reel is
+   right-anchored, so drop the centered -50% translate (it was left-pulling
+   the poster half its width off the shell) and let the right edge sit on
+   the content shell line, the same inset as the status chip */
 @media (min-width: 1280px) {
   .fig {
-    right: calc(max(0px, (100% - var(--container-shell)) / 2) + var(--gut-lg) - 3rem);
+    right: calc(max(0px, (100% - var(--container-shell)) / 2) + var(--gut-lg));
   }
+  body.ready .fig { transform: translateY(0); }
 }

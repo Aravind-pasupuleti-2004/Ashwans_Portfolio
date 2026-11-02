@@ -44,6 +44,8 @@ try {
     const p = await send('Runtime.evaluate', { expression: `(function(){
       const R = (sel) => { const e = document.querySelector(sel); if (!e) return null; const r = e.getBoundingClientRect(); return [Math.round(r.x), Math.round(r.y), Math.round(r.width), Math.round(r.height)] }
       const byText = (txt) => { const all = [...document.querySelectorAll('*')].filter(e => e.children.length === 0 && e.textContent.trim().toUpperCase().includes(txt)); if (!all.length) return null; const r = all[0].getBoundingClientRect(); return [Math.round(r.x), Math.round(r.y), Math.round(r.width), Math.round(r.height)] }
+      const hero = R('.hero')
+      const stage = R('.hero__stage')
       /* union rect of all h1 text lines: hero h1 */
       const h1 = document.querySelector('.h1')
       const h1r = h1 ? h1.getBoundingClientRect() : null
@@ -64,6 +66,8 @@ try {
       }
       return JSON.stringify({
         vw: innerWidth, vh: innerHeight,
+        hero,
+        stage,
         h1: h1r && [Math.round(h1r.x), Math.round(h1r.y), Math.round(h1r.width), Math.round(h1r.height)],
         h1Last: h1LastR && [Math.round(h1LastR.x), Math.round(h1LastR.y), Math.round(h1LastR.width), Math.round(h1LastR.height)],
         fig: fr && [Math.round(fr.x), Math.round(fr.y), Math.round(fr.width), Math.round(fr.height)],
