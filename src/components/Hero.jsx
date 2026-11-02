@@ -191,7 +191,6 @@ export default function Hero({ onOpenShowreel }) {
                 alt="Ashwan — Video Editor & Graphic Designer"
                 className="reel__photo"
               />
-              <span className="reel__wm">ASHWAN</span>
             </span>
             <span className="reel__cap">
               <span>{hero.showreelLabel}</span>

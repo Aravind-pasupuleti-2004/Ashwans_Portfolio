@@ -107,14 +107,6 @@ body.ready .fig { opacity: 1; transform: translate(-50%, 0); }
   pointer-events: none;
   user-select: none;
 }
-.reel__wm {
-  position: absolute; left: 50%; translate: -50% 0; bottom: 22%;
-  white-space: nowrap; user-select: none; pointer-events: none;
-  font-weight: 700; line-height: 1; letter-spacing: -0.02em;
-  color: rgba(255, 255, 255, 0.62);
-  font-size: clamp(3.4rem, 7.4vw, 5.6rem);
-}
-
 .reel__cap {
   position: absolute; left: 1rem; bottom: 1rem; right: 1rem;
   display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;
